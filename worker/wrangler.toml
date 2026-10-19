@@ -1,0 +1,9 @@
+# Optional: deploy with `npx wrangler deploy` from this folder.
+# The key is never stored here: `npx wrangler secret put GEMINI_API_KEY`
+name = "pdf-insight-api"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+
+[vars]
+ALLOWED_ORIGINS = "https://<user>.github.io,http://localhost:5173"
+GEMINI_MODEL = "gemini-2.5-flash"
