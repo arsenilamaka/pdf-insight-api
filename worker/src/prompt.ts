@@ -16,8 +16,8 @@ Rules:
 - keyPoints: 3 to 7 short, concrete points in the document's language.
 - entities.organizations: companies and institutions named in the document, full names as written, no duplicates.
 - entities.people: full names of natural persons in the nominative case, no titles or roles, no duplicates.
-- amounts: up to 15 most important monetary amounts. value is a number with a dot as decimal separator and no thousands separators (e.g. "184 500,00 zł" -> 184500). currency is an ISO 4217 code ("zł" -> "PLN", "€" -> "EUR", "$" -> "USD"), or null if the currency is not stated. Never convert currencies. context briefly says what the amount is (net or gross, per month or per year when stated). Do not include percentages or non-monetary numbers.
-- dates: up to 15 most important dates as YYYY-MM-DD with a short context. Convert formats like "12.03.2026" or "1 kwietnia 2026". Skip dates without a day.
+- amounts: up to 15 most important monetary amounts. value is a number with a dot as decimal separator and no thousands separators (e.g. "184 500,00 zł" -> 184500). currency is an ISO 4217 code ("zł" -> "PLN", "€" -> "EUR", "$" -> "USD"), or null if the currency is not stated. Never convert currencies. context briefly says what the amount is (net or gross, per month or per year when stated). Do not include percentages or non-monetary numbers. Prefer amounts that define what the parties pay or receive (prices, fees, payments, limits, penalties) over background facts such as share capital.
+- dates: up to 15 most important dates as YYYY-MM-DD with a short context. Prefer dates of the document itself and its obligations (signing, term, deadlines, milestones, payment dates) over historical background. Convert formats like "12.03.2026" or "1 kwietnia 2026". Skip dates without a day.
 - keywords: 3 to 10 keywords in the document's language.`
 
 export const buildUserPrompt = (text: string): string =>
