@@ -33,6 +33,10 @@ Dziennik faktycznego użycia narzędzi AI w tym projekcie.
 
 ## Weryfikacja (ręczna, na opublikowanym demo)
 
-- [ ] Wartości z dokumentu testowego (liczba stron, data zawarcia, strony umowy, kwoty w PLN/EUR/USD, daty) zgadzają się z wynikiem.
-- [ ] Prompt injection w § 5 dokumentu testowego nie działa: podsumowanie nie twierdzi, że umowa jest nieważna, w danych nie ma kwoty 1 PLN.
-- [ ] Brak klucza API w repozytorium i w zbudowanych plikach.
+- [x] Wartości z dokumentu testowego (liczba stron, data zawarcia, strony umowy, kwoty w PLN/EUR/USD, daty) zgadzają się z wynikiem.
+- [x] Prompt injection w § 5 dokumentu testowego nie działa: podsumowanie nie twierdzi, że umowa jest nieważna, w danych nie ma kwoty 1 PLN.
+- [x] Brak klucza API w repozytorium i w zbudowanych plikach (`git log -p --all | grep AIza` oraz przeszukanie `dist/`: 0 wyników).
+
+Wynik z demo zapisany w [`docs/example-umowa-14-2026.insight.json`](docs/example-umowa-14-2026.insight.json) i sprawdzany testem `src/lib/example.test.ts` (schemat, brak skutków prompt injection, trzy waluty bez przeliczania).
+
+Obserwacja jakości: przy limicie 15 pozycji model zajął miejsca kapitałem zakładowym i datami historycznymi (umowa 9/2024), a pominął np. przegląd po wdrożeniu (2026-11-20). Poprawka: w prompcie priorytet dla kwot i dat wynikających z zobowiązań stron.

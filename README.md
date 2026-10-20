@@ -6,6 +6,8 @@ Aplikacja webowa, która wczytuje plik PDF, tworzy jego krótkie podsumowanie i 
 
 ![Zrzut ekranu](docs/screenshot.png)
 
+Przykładowy wynik dla dokumentu testowego: [`docs/example-umowa-14-2026.insight.json`](docs/example-umowa-14-2026.insight.json).
+
 ## Jak to działa
 
 ```
