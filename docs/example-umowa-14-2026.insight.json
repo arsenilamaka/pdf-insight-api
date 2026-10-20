@@ -1,0 +1,117 @@
+{
+  "document": {
+    "fileName": "Test_PDF_Insight_umowa_14-2026.pdf",
+    "pages": 12,
+    "language": "pl",
+    "type": "umowa",
+    "title": "UMOWA RAMOWA NR 14/2026 o wdrożenie i utrzymanie systemu CRM",
+    "date": "2026-03-12"
+  },
+  "summary": "Dokument to umowa ramowa o wdrożenie i utrzymanie systemu CRM w modelu SaaS, zawarta pomiędzy Nordwave Logistics sp. z o.o. a Kwadrat Software S.A. Wynagrodzenie ryczałtowe za wdrożenie wynosi 184 500,00 zł netto (226 935,00 zł brutto), a miesięczny abonament za usługi utrzymania to 12 300,00 PLN netto. Umowa została zawarta na czas określony od 1 kwietnia 2026 r. do 31 marca 2028 r., a planowany termin Go-live przypada na 12 października 2026 r. Zakres prac obejmuje analizę przedwdrożeniową, konfigurację systemu dla 120 użytkowników, migrację danych, integracje m.in. z SAP Business One oraz szkolenia i powdrożeniowe wsparcie.",
+  "keyPoints": [
+    "Przedmiotem umowy jest analiza, konfiguracja, migracja danych, integracje i wdrożenie systemu CRM oraz jego powdrożeniowe utrzymanie.",
+    "Wartość wdrożenia wynosi 184 500,00 zł netto (płatna w 5 etapach), przy czym przewidziano zaliczkę 30% w kwocie 55 350,00 zł netto.",
+    "Miesięczny koszt utrzymania po uruchomieniu produkcyjnym wynosi 12 300,00 PLN netto, opłaty licencyjne 8 600 EUR rocznie, a koszt chmury 890 USD miesięcznie.",
+    "Umowa obowiązuje od 1 kwietnia 2026 r. do 31 marca 2028 r. z opcją automatycznego przedłużenia o kolejne 12 miesięcy.",
+    "Harmonogram przewiduje 5 etapów prac z planowanym terminem produkcyjnego startu (Go-live) w dniu 12 października 2026 r. oraz 4-tygodniowym okresem hypercare.",
+    "Gwarantowany poziom dostępności systemu wynosi 99,5% w skali miesiąca, z określonymi progami kar za niedotrzymanie SLA."
+  ],
+  "entities": {
+    "organizations": ["Nordwave Logistics sp. z o.o.", "Kwadrat Software S.A.", "GUS"],
+    "people": [
+      "Anna Kowalczyk",
+      "Marek Zieliński",
+      "Paweł Dąbrowski",
+      "Tomasz Wiśniewski",
+      "Julia Mazur",
+      "Katarzyna Nowak",
+      "Piotr Lewandowski",
+      "Michał Kamiński",
+      "Ewa Szymańska"
+    ]
+  },
+  "amounts": [
+    { "value": 2500000, "currency": "PLN", "context": "kapitał zakładowy Zamawiającego" },
+    { "value": 1200000, "currency": "PLN", "context": "kapitał zakładowy Wykonawcy" },
+    {
+      "value": 250000,
+      "currency": "PLN",
+      "context": "maksymalny budżet Zamawiającego netto na etap wdrożenia"
+    },
+    {
+      "value": 184500,
+      "currency": "PLN",
+      "context": "wynagrodzenie ryczałtowe netto za realizację wdrożenia"
+    },
+    {
+      "value": 42435,
+      "currency": "PLN",
+      "context": "podatek VAT 23% od wynagrodzenia za wdrożenie"
+    },
+    {
+      "value": 226935,
+      "currency": "PLN",
+      "context": "wynagrodzenie brutto za realizację wdrożenia"
+    },
+    {
+      "value": 12300,
+      "currency": "PLN",
+      "context": "miesięczny abonament netto za usługi utrzymania"
+    },
+    {
+      "value": 15129,
+      "currency": "PLN",
+      "context": "miesięczny abonament brutto za usługi utrzymania"
+    },
+    {
+      "value": 2150,
+      "currency": "EUR",
+      "context": "opłata licencyjna roczna za jedną instancję modułu analitycznego"
+    },
+    {
+      "value": 8600,
+      "currency": "EUR",
+      "context": "łączna opłata licencyjna roczna za 4 instancje modułu analitycznego"
+    },
+    { "value": 890, "currency": "USD", "context": "miesięczny koszt infrastruktury chmurowej" },
+    {
+      "value": 240,
+      "currency": "PLN",
+      "context": "stawka netto za roboczogodzinę prac dodatkowych"
+    },
+    {
+      "value": 60000,
+      "currency": "PLN",
+      "context": "maksymalna łączna wartość prac dodatkowych netto w roku kalendarzowym"
+    },
+    { "value": 55350, "currency": "PLN", "context": "wartość netto 30% zaliczki na wdrożenie" },
+    { "value": 68080.5, "currency": "PLN", "context": "wartość brutto 30% zaliczki na wdrożenie" }
+  ],
+  "dates": [
+    { "date": "2026-03-12", "context": "data zawarcia umowy ramowej" },
+    { "date": "2026-03-02", "context": "data pełnomocnictwa dla Pawła Dąbrowskiego" },
+    { "date": "2024-06-03", "context": "data zawarcia dotychczasowej umowy nr 9/2024" },
+    { "date": "2025-12-31", "context": "data rozwiązania wcześniejszej umowy nr 9/2024" },
+    { "date": "2026-04-01", "context": "początek okresu obowiązywania umowy oraz start etapu E1" },
+    { "date": "2028-03-31", "context": "koniec okresu obowiązywania umowy" },
+    { "date": "2026-04-30", "context": "planowany koniec etapu E1" },
+    { "date": "2026-05-04", "context": "planowany start etapu E2" },
+    { "date": "2026-07-17", "context": "planowany koniec etapu E2" },
+    { "date": "2026-10-12", "context": "planowany termin Go-live oraz start etapu E5" },
+    { "date": "2026-11-06", "context": "planowany koniec etapu E5" },
+    { "date": "2026-04-02", "context": "spotkanie otwierające (kick-off)" },
+    { "date": "2026-03-15", "context": "data wystawienia faktury zaliczkowej" },
+    { "date": "2026-03-29", "context": "termin płatności faktury zaliczkowej" },
+    { "date": "2026-02-24", "context": "data spotkania przedumownego" }
+  ],
+  "keywords": [
+    "umowa ramowa",
+    "wdrożenie CRM",
+    "SaaS",
+    "SLA",
+    "faktura zaliczkowa",
+    "utrzymanie systemu",
+    "migracja danych",
+    "harmonogram"
+  ]
+}
