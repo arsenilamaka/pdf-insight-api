@@ -58,12 +58,12 @@ npm run lint && npm run build
 
 ### Zmienne środowiskowe
 
-| Gdzie                                            | Zmienna           | Opis                                                 |
-| ------------------------------------------------ | ----------------- | ---------------------------------------------------- |
-| frontend (`.env.local`, GitHub Actions variable) | `VITE_API_URL`    | publiczny adres workera, **nie** sekret              |
-| worker (secret)                                  | `GEMINI_API_KEY`  | klucz z Google AI Studio                             |
-| worker (var)                                     | `ALLOWED_ORIGINS` | np. `https://<user>.github.io,http://localhost:5173` |
-| worker (var, opcjonalnie)                        | `GEMINI_MODEL`    | domyślnie `gemini-2.5-flash`                         |
+| Gdzie                                            | Zmienna           | Opis                                                                                         |
+| ------------------------------------------------ | ----------------- | -------------------------------------------------------------------------------------------- |
+| frontend (`.env.local`, GitHub Actions variable) | `VITE_API_URL`    | publiczny adres workera, **nie** sekret                                                      |
+| worker (secret)                                  | `GEMINI_API_KEY`  | klucz z Google AI Studio                                                                     |
+| worker (var)                                     | `ALLOWED_ORIGINS` | produkcja: `https://arsenilamaka.github.io`; lokalnie (`.dev.vars`): `http://localhost:5173` |
+| worker (var, opcjonalnie)                        | `GEMINI_MODEL`    | domyślnie `gemini-flash-latest` (alias aktualnego modelu Flash)                              |
 
 ### Worker
 
@@ -78,7 +78,8 @@ Settings → Pages → Source: **GitHub Actions**. Settings → Secrets and vari
 ## Bezpieczeństwo
 
 - Klucz API istnieje tylko jako sekret workera; nie ma go w kodzie, w `.env` ani w historii Git (`.env*` w `.gitignore`).
-- CORS ograniczony do listy `ALLOWED_ORIGINS`; inne originy dostają 403.
+- CORS: w produkcji `ALLOWED_ORIGINS` zawiera tylko `https://arsenilamaka.github.io` (dokładny origin, bez ścieżki repozytorium i bez `localhost`); inne originy dostają 403. Lokalnie worker uruchamia się z `worker/.dev.vars` (w `.gitignore`), np. `ALLOWED_ORIGINS=http://localhost:5173`.
+- CORS **nie chroni** przed bezpośrednimi żądaniami HTTP: nagłówek `Origin` można podrobić np. w curl. Przed nadużyciem chronią limit żądań na IP, limity rozmiaru i dzienny limit API Gemini.
 - Limity: 10 MB pliku, 200 000 znaków tekstu, 1 MB żądania, 10 analiz na 10 minut z jednego IP.
 - Brak `dangerouslySetInnerHTML`; wyniki AI są renderowane jako tekst.
 - Interfejs informuje, że tekst pliku trafia do zewnętrznego API AI.

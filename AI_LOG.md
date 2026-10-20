@@ -28,6 +28,8 @@ Dziennik faktycznego użycia narzędzi AI w tym projekcie.
 3. **API pdf.js v6.** Wygenerowany kod wywoływał `pdf.destroy()`, którego nie ma w typach `PDFDocumentProxy` w tej wersji. Wykryte przez `tsc`. Poprawka: `loadingTask.destroy()`.
 4. **Błędny test.** Test ochrony przed fałszywym `</document>` liczył wystąpienia w całym żądaniu, łącznie z instrukcją systemową. Poprawka: test sprawdza tylko treść użytkownika.
 5. **Rozmiar paczki.** Pierwszy build miał 748 kB JS (pdf.js). Poprawka: dynamiczny import pdf.js przy pierwszym pliku, start strony ładuje ok. 320 kB.
+6. **Wycofany model.** Pierwsza konfiguracja używała `gemini-2.5-flash`. Na opublikowanym demo Gemini zwrócił 404, bo model nie był już dostępny. Poprawka: domyślny alias `gemini-flash-latest`, `thinkingLevel: low` dla nowszych modeli i czytelny błąd konfiguracji przy 404.
+7. **CORS.** AI zaproponowało dopisanie `localhost` do produkcyjnej listy originów. Poprawka po mojej uwadze: w produkcji tylko `https://arsenilamaka.github.io`, `localhost` tylko w lokalnym `.dev.vars`.
 
 ## Weryfikacja (ręczna, na opublikowanym demo)
 

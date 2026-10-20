@@ -32,8 +32,10 @@ export const buildGeminiBody = (model: string, text: string): Record<string, unk
     temperature: 0.1,
     responseMimeType: 'application/json',
     responseSchema: RESPONSE_SCHEMA,
-    // 2.5 models think by default; skipping it keeps the answer well under 30 s
-    ...(model.startsWith('gemini-2.5-flash') ? { thinkingConfig: { thinkingBudget: 0 } } : {}),
+    // Flash models think by default; keeping it minimal keeps the answer well under 30 s
+    thinkingConfig: model.startsWith('gemini-2.5')
+      ? { thinkingBudget: 0 }
+      : { thinkingLevel: 'low' },
   },
 })
 
@@ -55,6 +57,10 @@ const callGemini = async (
     throw new AnalyzeError('AI_UNAVAILABLE', 504, 'AI provider did not respond in time')
   }
 
+  if (response.status === 404) {
+    // Model ids get retired; GEMINI_MODEL must name a model that still exists
+    throw new AnalyzeError('SERVER_MISCONFIGURED', 500, `AI model "${model}" not found`)
+  }
   if (response.status === 429) {
     throw new AnalyzeError('AI_QUOTA_EXCEEDED', 429, 'AI provider quota exceeded')
   }

@@ -4,13 +4,14 @@ import { AnalyzeError, analyzeDocument } from './analyze.ts'
 export interface Env {
   GEMINI_API_KEY?: string
   GEMINI_MODEL?: string
-  // Comma-separated exact origins, e.g. "https://user.github.io,http://localhost:5173"
+  // Comma-separated exact origins. Production: only the GitHub Pages origin; localhost only in .dev.vars
   ALLOWED_ORIGINS?: string
   // Optional Cloudflare rate limiting binding
   RATE_LIMITER?: { limit: (options: { key: string }) => Promise<{ success: boolean }> }
 }
 
-const DEFAULT_MODEL = 'gemini-2.5-flash'
+// Alias to Google's current stable Flash model, so a retired version id cannot break the demo
+const DEFAULT_MODEL = 'gemini-flash-latest'
 const MAX_BODY_BYTES = 1_000_000
 const WINDOW_MS = 10 * 60 * 1000
 const MAX_REQUESTS_PER_WINDOW = 10
