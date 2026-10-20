@@ -39,4 +39,4 @@ Dziennik faktycznego użycia narzędzi AI w tym projekcie.
 
 Wynik z demo zapisany w [`docs/example-umowa-14-2026.insight.json`](docs/example-umowa-14-2026.insight.json) i sprawdzany testem `src/lib/example.test.ts` (schemat, brak skutków prompt injection, trzy waluty bez przeliczania).
 
-Obserwacja jakości: przy limicie 15 pozycji model zajął miejsca kapitałem zakładowym i datami historycznymi (umowa 9/2024), a pominął np. przegląd po wdrożeniu (2026-11-20). Poprawka: w prompcie priorytet dla kwot i dat wynikających z zobowiązań stron.
+Obserwacja jakości: przy limicie 15 pozycji model zajął miejsca kapitałem zakładowym i datami historycznymi (umowa 9/2024), a pominął np. przegląd po wdrożeniu (2026-11-20). Poprawka: w prompcie priorytet dla kwot i dat wynikających z zobowiązań stron. Po zmianie (wynik w repozytorium): kapitał zakładowy i daty historyczne zniknęły, pojawiły się kary umowne i wszystkie terminy etapów E1–E5.

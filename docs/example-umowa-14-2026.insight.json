@@ -7,17 +7,17 @@
     "title": "UMOWA RAMOWA NR 14/2026 o wdrożenie i utrzymanie systemu CRM",
     "date": "2026-03-12"
   },
-  "summary": "Dokument to umowa ramowa o wdrożenie i utrzymanie systemu CRM w modelu SaaS, zawarta pomiędzy Nordwave Logistics sp. z o.o. a Kwadrat Software S.A. Wynagrodzenie ryczałtowe za wdrożenie wynosi 184 500,00 zł netto (226 935,00 zł brutto), a miesięczny abonament za usługi utrzymania to 12 300,00 PLN netto. Umowa została zawarta na czas określony od 1 kwietnia 2026 r. do 31 marca 2028 r., a planowany termin Go-live przypada na 12 października 2026 r. Zakres prac obejmuje analizę przedwdrożeniową, konfigurację systemu dla 120 użytkowników, migrację danych, integracje m.in. z SAP Business One oraz szkolenia i powdrożeniowe wsparcie.",
+  "summary": "Dokument stanowi umowę ramową zawartą 12 marca 2026 r. pomiędzy firmami Nordwave Logistics sp. z o.o. a Kwadrat Software S.A. Przedmiotem umowy jest wdrożenie oraz świadczenie usług utrzymania i rozwoju systemu CRM w modelu SaaS. Całkowite wynagrodzenie ryczałtowe za etap wdrożenia wynosi 184 500,00 zł netto (226 935,00 zł brutto), a opłata abonamentowa za utrzymanie to 12 300,00 zł netto miesięcznie. Umowa została zawarta na czas określony 24 miesięcy od 1 kwietnia 2026 r. do 31 marca 2028 r., z planowanym terminem produkcyjnego uruchomienia (Go-live) na dzień 12 października 2026 r.",
   "keyPoints": [
-    "Przedmiotem umowy jest analiza, konfiguracja, migracja danych, integracje i wdrożenie systemu CRM oraz jego powdrożeniowe utrzymanie.",
-    "Wartość wdrożenia wynosi 184 500,00 zł netto (płatna w 5 etapach), przy czym przewidziano zaliczkę 30% w kwocie 55 350,00 zł netto.",
-    "Miesięczny koszt utrzymania po uruchomieniu produkcyjnym wynosi 12 300,00 PLN netto, opłaty licencyjne 8 600 EUR rocznie, a koszt chmury 890 USD miesięcznie.",
-    "Umowa obowiązuje od 1 kwietnia 2026 r. do 31 marca 2028 r. z opcją automatycznego przedłużenia o kolejne 12 miesięcy.",
-    "Harmonogram przewiduje 5 etapów prac z planowanym terminem produkcyjnego startu (Go-live) w dniu 12 października 2026 r. oraz 4-tygodniowym okresem hypercare.",
-    "Gwarantowany poziom dostępności systemu wynosi 99,5% w skali miesiąca, z określonymi progami kar za niedotrzymanie SLA."
+    "Wdrożenie systemu CRM w modelu SaaS dla 120 użytkowników wraz z integracją z systemem ERP, pocztą e-mail i VoIP.",
+    "Wynagrodzenie za wdrożenie podzielone na 5 etapów opiewa na kwotę 184 500,00 zł netto (226 935,00 zł brutto).",
+    "Miesięczny abonament za usługi utrzymania wynosi 12 300,00 zł netto, a roczna opłata licencyjna za 4 instancje modułu analitycznego to 8 600 EUR.",
+    "Planowany termin uruchomienia produkcyjnego (Go-live) ustalono na 12 października 2026 r., po którym przewidziano 4-tygodniowy okres wsparcia hypercare.",
+    "Umowa zawarta na okres 24 miesięcy (od 01.04.2026 r. do 31.03.2028 r.) z możliwością automatycznego przedłużenia o kolejne 12 miesięcy.",
+    "Gwarantowany poziom dostępności systemu w ramach SLA ustalono na poziomie 99,5% w skali miesiąca kalendarzowego."
   ],
   "entities": {
-    "organizations": ["Nordwave Logistics sp. z o.o.", "Kwadrat Software S.A.", "GUS"],
+    "organizations": ["Nordwave Logistics sp. z o.o.", "Kwadrat Software S.A."],
     "people": [
       "Anna Kowalczyk",
       "Marek Zieliński",
@@ -31,12 +31,10 @@
     ]
   },
   "amounts": [
-    { "value": 2500000, "currency": "PLN", "context": "kapitał zakładowy Zamawiającego" },
-    { "value": 1200000, "currency": "PLN", "context": "kapitał zakładowy Wykonawcy" },
     {
       "value": 250000,
       "currency": "PLN",
-      "context": "maksymalny budżet Zamawiającego netto na etap wdrożenia"
+      "context": "maksymalny budżet Zamawiającego na etap wdrożenia netto"
     },
     {
       "value": 184500,
@@ -44,14 +42,9 @@
       "context": "wynagrodzenie ryczałtowe netto za realizację wdrożenia"
     },
     {
-      "value": 42435,
-      "currency": "PLN",
-      "context": "podatek VAT 23% od wynagrodzenia za wdrożenie"
-    },
-    {
       "value": 226935,
       "currency": "PLN",
-      "context": "wynagrodzenie brutto za realizację wdrożenia"
+      "context": "wynagrodzenie ryczałtowe brutto za realizację wdrożenia"
     },
     {
       "value": 12300,
@@ -71,9 +64,13 @@
     {
       "value": 8600,
       "currency": "EUR",
-      "context": "łączna opłata licencyjna roczna za 4 instancje modułu analitycznego"
+      "context": "łączna roczna opłata licencyjna za 4 instancje modułu analitycznego"
     },
-    { "value": 890, "currency": "USD", "context": "miesięczny koszt infrastruktury chmurowej" },
+    {
+      "value": 890,
+      "currency": "USD",
+      "context": "miesięczny koszt infrastruktury chmurowej netto"
+    },
     {
       "value": 240,
       "currency": "PLN",
@@ -82,36 +79,106 @@
     {
       "value": 60000,
       "currency": "PLN",
-      "context": "maksymalna łączna wartość prac dodatkowych netto w roku kalendarzowym"
+      "context": "maksymalna roczna wartość prac dodatkowych netto"
     },
-    { "value": 55350, "currency": "PLN", "context": "wartość netto 30% zaliczki na wdrożenie" },
-    { "value": 68080.5, "currency": "PLN", "context": "wartość brutto 30% zaliczki na wdrożenie" }
+    {
+      "value": 15000,
+      "currency": "PLN",
+      "context": "kara umowna za opóźnienie Go-live ponad 30 dni"
+    },
+    {
+      "value": 50000,
+      "currency": "PLN",
+      "context": "kara umowna za każde naruszenie poufności"
+    },
+    {
+      "value": 200000,
+      "currency": "PLN",
+      "context": "limit kar umownych z tytułu naruszenia poufności"
+    },
+    {
+      "value": 55350,
+      "currency": "PLN",
+      "context": "kwota netto faktury zaliczkowej (30% wynagrodzenia za wdrożenie)"
+    },
+    {
+      "value": 68080.5,
+      "currency": "PLN",
+      "context": "kwota brutto faktury zaliczkowej"
+    }
   ],
   "dates": [
-    { "date": "2026-03-12", "context": "data zawarcia umowy ramowej" },
-    { "date": "2026-03-02", "context": "data pełnomocnictwa dla Pawła Dąbrowskiego" },
-    { "date": "2024-06-03", "context": "data zawarcia dotychczasowej umowy nr 9/2024" },
-    { "date": "2025-12-31", "context": "data rozwiązania wcześniejszej umowy nr 9/2024" },
-    { "date": "2026-04-01", "context": "początek okresu obowiązywania umowy oraz start etapu E1" },
-    { "date": "2028-03-31", "context": "koniec okresu obowiązywania umowy" },
-    { "date": "2026-04-30", "context": "planowany koniec etapu E1" },
-    { "date": "2026-05-04", "context": "planowany start etapu E2" },
-    { "date": "2026-07-17", "context": "planowany koniec etapu E2" },
-    { "date": "2026-10-12", "context": "planowany termin Go-live oraz start etapu E5" },
-    { "date": "2026-11-06", "context": "planowany koniec etapu E5" },
-    { "date": "2026-04-02", "context": "spotkanie otwierające (kick-off)" },
-    { "date": "2026-03-15", "context": "data wystawienia faktury zaliczkowej" },
-    { "date": "2026-03-29", "context": "termin płatności faktury zaliczkowej" },
-    { "date": "2026-02-24", "context": "data spotkania przedumownego" }
+    {
+      "date": "2026-03-12",
+      "context": "data zawarcia Umowy ramowej nr 14/2026"
+    },
+    {
+      "date": "2026-04-01",
+      "context": "początek okresu obowiązywania umowy oraz rozpoczęcie etapu E1"
+    },
+    {
+      "date": "2028-03-31",
+      "context": "koniec okresu obowiązywania umowy"
+    },
+    {
+      "date": "2026-04-02",
+      "context": "termin spotkania otwierającego (kick-off)"
+    },
+    {
+      "date": "2026-04-30",
+      "context": "zakończenie etapu E1 (analiza przedwdrożeniowa)"
+    },
+    {
+      "date": "2026-05-04",
+      "context": "rozpoczęcie etapu E2 (konfiguracja i migracja)"
+    },
+    {
+      "date": "2026-07-17",
+      "context": "zakończenie etapu E2"
+    },
+    {
+      "date": "2026-07-20",
+      "context": "rozpoczęcie etapu E3 (integracje)"
+    },
+    {
+      "date": "2026-09-11",
+      "context": "zakończenie etapu E3"
+    },
+    {
+      "date": "2026-09-14",
+      "context": "rozpoczęcie etapu E4 (UAT i szkolenia)"
+    },
+    {
+      "date": "2026-10-09",
+      "context": "zakończenie etapu E4"
+    },
+    {
+      "date": "2026-10-12",
+      "context": "planowany termin Go-live oraz rozpoczęcie etapu E5"
+    },
+    {
+      "date": "2026-11-06",
+      "context": "zakończenie etapu E5 (wsparcie hypercare)"
+    },
+    {
+      "date": "2026-03-15",
+      "context": "data wystawienia faktury zaliczkowej"
+    },
+    {
+      "date": "2026-03-29",
+      "context": "termin płatności faktury zaliczkowej"
+    }
   ],
   "keywords": [
-    "umowa ramowa",
-    "wdrożenie CRM",
+    "CRM",
+    "wdrożenie",
+    "utrzymanie",
     "SaaS",
     "SLA",
+    "umowa ramowa",
+    "harmonogram",
     "faktura zaliczkowa",
-    "utrzymanie systemu",
     "migracja danych",
-    "harmonogram"
+    "integracja"
   ]
 }
