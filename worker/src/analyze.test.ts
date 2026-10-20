@@ -68,6 +68,25 @@ describe('analyzeDocument', () => {
 })
 
 describe('model errors', () => {
+  it.each([400, 401, 403])(
+    'maps HTTP %i to a configuration error without retry',
+    async (status) => {
+      const fetchFn = vi.fn<typeof fetch>().mockResolvedValue(new Response('{}', { status }))
+      await expect(analyzeDocument(request, options(fetchFn))).rejects.toMatchObject({
+        code: 'SERVER_MISCONFIGURED',
+      })
+      expect(fetchFn).toHaveBeenCalledTimes(1)
+    },
+  )
+
+  it('maps HTTP 503 to a temporary error without retry', async () => {
+    const fetchFn = vi.fn<typeof fetch>().mockResolvedValue(new Response('{}', { status: 503 }))
+    await expect(analyzeDocument(request, options(fetchFn))).rejects.toMatchObject({
+      code: 'AI_UNAVAILABLE',
+    })
+    expect(fetchFn).toHaveBeenCalledTimes(1)
+  })
+
   it('maps HTTP 404 to a configuration error naming the model', async () => {
     const fetchFn = vi.fn<typeof fetch>().mockResolvedValue(new Response('{}', { status: 404 }))
     await expect(analyzeDocument(request, options(fetchFn))).rejects.toMatchObject({

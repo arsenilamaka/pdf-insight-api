@@ -3,7 +3,7 @@ import type { TextItem } from 'pdfjs-dist/types/src/display/api'
 // Bundled as a hashed asset, so the path is correct under the GitHub Pages base URL
 import workerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
 import { PdfError } from './pdfError.ts'
-import { joinPageText } from './pdfText.ts'
+import { hasEnoughText, joinPageText } from './pdfText.ts'
 
 GlobalWorkerOptions.workerSrc = workerUrl
 
@@ -31,18 +31,21 @@ export const extractPdfText = async (file: File): Promise<ExtractedPdf> => {
 
   try {
     const pageTexts: string[] = []
+    const rawTexts: string[] = []
     const pagesWithoutText: number[] = []
     for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber += 1) {
       const page = await pdf.getPage(pageNumber)
       const content = await page.getTextContent()
       const pageText = joinPageText(content.items.filter(isTextItem))
       if (pageText.length < MIN_PAGE_CHARS) pagesWithoutText.push(pageNumber)
+      rawTexts.push(pageText)
       // Page markers help the model and keep the original order explicit
       pageTexts.push(`[Page ${pageNumber}]\n${pageText}`)
       page.cleanup()
     }
 
     if (pagesWithoutText.length === pdf.numPages) throw new PdfError('NO_TEXT')
+    if (!hasEnoughText(rawTexts)) throw new PdfError('TOO_LITTLE_TEXT')
 
     return { pages: pdf.numPages, text: pageTexts.join('\n\n'), pagesWithoutText }
   } finally {

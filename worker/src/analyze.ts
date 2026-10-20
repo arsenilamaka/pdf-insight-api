@@ -61,6 +61,10 @@ const callGemini = async (
     // Model ids get retired; GEMINI_MODEL must name a model that still exists
     throw new AnalyzeError('SERVER_MISCONFIGURED', 500, `AI model "${model}" not found`)
   }
+  if (response.status === 400 || response.status === 401 || response.status === 403) {
+    // Invalid key, missing access or rejected config: retrying will not help
+    throw new AnalyzeError('SERVER_MISCONFIGURED', 500, `AI provider rejected the request`)
+  }
   if (response.status === 429) {
     throw new AnalyzeError('AI_QUOTA_EXCEEDED', 429, 'AI provider quota exceeded')
   }

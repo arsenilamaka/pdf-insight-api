@@ -13,6 +13,8 @@ export const ERROR_MESSAGES: Record<AppErrorCode, string> = {
   CORRUPTED: 'Nie udało się otworzyć pliku. PDF może być uszkodzony.',
   NO_TEXT:
     'Ten PDF nie zawiera warstwy tekstowej (prawdopodobnie jest skanem). Obsługiwane są tylko pliki z tekstem.',
+  TOO_LITTLE_TEXT:
+    'Dokument zawiera za mało tekstu, aby rzetelnie go podsumować. Wybierz dłuższy dokument.',
   NO_API_URL: 'Aplikacja nie ma skonfigurowanego adresu API (VITE_API_URL).',
   NETWORK: 'Brak połączenia z serwerem analizy. Sprawdź internet i spróbuj ponownie.',
   TIMEOUT: 'Analiza trwała zbyt długo. Spróbuj ponownie.',
@@ -25,7 +27,8 @@ export const ERROR_MESSAGES: Record<AppErrorCode, string> = {
   AI_INVALID_RESPONSE:
     'AI zwróciło odpowiedź niezgodną ze schematem (również przy ponownej próbie). Spróbuj ponownie.',
   INVALID_RESULT: 'Otrzymany wynik nie przeszedł walidacji schematu.',
-  SERVER_MISCONFIGURED: 'Serwer analizy nie jest skonfigurowany (brak klucza API).',
+  SERVER_MISCONFIGURED:
+    'Serwer analizy jest błędnie skonfigurowany (klucz API lub model AI). Ponowienie nie pomoże.',
   UNKNOWN: 'Wystąpił nieoczekiwany błąd. Spróbuj ponownie.',
 }
 

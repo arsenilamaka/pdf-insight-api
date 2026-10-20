@@ -8,3 +8,10 @@ export const joinPageText = (items: { str: string; hasEOL: boolean }[]): string 
     .replace(/ ?\n ?/g, '\n')
     .replace(/\n{3,}/g, '\n\n')
     .trim()
+
+// Below this the schema (3-5 sentences, 3-7 key points) would force the model to invent content
+export const MIN_DOCUMENT_CHARS = 200
+
+export const hasEnoughText = (pageTexts: string[]): boolean =>
+  pageTexts.reduce((total, text) => total + text.replace(/\s+/g, '').length, 0) >=
+  MIN_DOCUMENT_CHARS
