@@ -5,5 +5,5 @@ main = "src/index.ts"
 compatibility_date = "2026-10-01"
 
 [vars]
-ALLOWED_ORIGINS = "https://<user>.github.io,http://localhost:5173"
+ALLOWED_ORIGINS = "https://arsenilamaka.github.io,http://localhost:5173"
 GEMINI_MODEL = "gemini-2.5-flash"

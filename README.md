@@ -2,7 +2,7 @@
 
 Aplikacja webowa, która wczytuje plik PDF, tworzy jego krótkie podsumowanie i zamienia treść w uporządkowane dane JSON (zadanie rekrutacyjne Vibe Coder).
 
-**Demo:** https://&lt;user&gt;.github.io/pdf-insight/
+**Demo:** https://arsenilamaka.github.io/pdf-insight-api/
 
 ![Zrzut ekranu](docs/screenshot.png)
 
@@ -51,7 +51,7 @@ Wymagania: Node 22.
 ```bash
 npm ci
 cp .env.example .env.local   # ustaw VITE_API_URL na adres workera
-npm run dev                  # http://localhost:5173/pdf-insight/
+npm run dev                  # http://localhost:5173/pdf-insight-api/
 npm test                     # Vitest
 npm run lint && npm run build
 ```
