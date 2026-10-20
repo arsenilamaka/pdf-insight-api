@@ -26,15 +26,15 @@ Przykładowy wynik dla dokumentu testowego: [`docs/example-umowa-14-2026.insight
 
 ## Decyzje
 
-| Decyzja                                       | Dlaczego                                                                                                                                                                 |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Ekstrakcja tekstu w przeglądarce (pdf.js)     | brak wysyłania pliku binarnego, mniejsze żądanie, worker pozostaje prosty                                                                                                |
-| Cloudflare Workers                            | darmowy plan, sekrety, brak serwera do utrzymania przez 14 dni                                                                                                           |
-| Gemini 2.5 Flash (darmowy limit)              | natywny tryb JSON ze schematem, długi kontekst (cały dokument w jednym żądaniu, bez dzielenia), dobra jakość dla języka polskiego, odpowiedź < 30 s (myślenie wyłączone) |
-| Jeden schemat dla wszystkich typów dokumentów | brief definiuje typy `faktura / umowa / oferta / raport / inne`; schemat nie został rozszerzony                                                                          |
-| Brak danych = `null` lub `[]`                 | zgodnie z briefem; model ma zakaz zgadywania                                                                                                                             |
-| Treść PDF traktowana jako dane                | instrukcja systemowa, tekst w znacznikach `<document>`, wymuszony schemat, walidacja; dokument testowy zawiera próbę prompt injection                                    |
-| Bez routera i bibliotek UI                    | jedna strona, mniej zależności                                                                                                                                           |
+| Decyzja                                                        | Dlaczego                                                                                                                                                                                                                                      |
+| -------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Ekstrakcja tekstu w przeglądarce (pdf.js)                      | brak wysyłania pliku binarnego, mniejsze żądanie, worker pozostaje prosty                                                                                                                                                                     |
+| Cloudflare Workers                                             | darmowy plan, sekrety, brak serwera do utrzymania przez 14 dni                                                                                                                                                                                |
+| Gemini Flash przez alias `gemini-flash-latest` (darmowy limit) | natywny tryb JSON ze schematem, długi kontekst (cały dokument w jednym żądaniu, bez dzielenia), dobra jakość dla języka polskiego; `thinkingLevel: low` dla krótszej odpowiedzi; alias, bo konkretny `gemini-2.5-flash` został wycofany (404) |
+| Jeden schemat dla wszystkich typów dokumentów                  | brief definiuje typy `faktura / umowa / oferta / raport / inne`; schemat nie został rozszerzony                                                                                                                                               |
+| Brak danych = `null` lub `[]`                                  | zgodnie z briefem; model ma zakaz zgadywania                                                                                                                                                                                                  |
+| Treść PDF traktowana jako dane                                 | instrukcja systemowa, tekst w znacznikach `<document>`, wymuszony schemat, walidacja; dokument testowy zawiera próbę prompt injection                                                                                                         |
+| Bez routera i bibliotek UI                                     | jedna strona, mniej zależności                                                                                                                                                                                                                |
 
 ## Struktura
 
@@ -52,10 +52,18 @@ Wymagania: Node 22.
 
 ```bash
 npm ci
-cp .env.example .env.local   # ustaw VITE_API_URL na adres workera
-npm run dev                  # http://localhost:5173/pdf-insight-api/
 npm test                     # Vitest
 npm run lint && npm run build
+```
+
+Produkcyjny worker akceptuje tylko origin demo, dlatego lokalny frontend potrzebuje lokalnego workera:
+
+```bash
+cp worker/.dev.vars.example worker/.dev.vars   # wpisz własny GEMINI_API_KEY (plik jest w .gitignore)
+cd worker && npx wrangler dev                  # http://localhost:8787
+# w drugim terminalu, w katalogu głównym:
+echo "VITE_API_URL=http://localhost:8787" > .env.local
+npm run dev                                    # http://localhost:5173/pdf-insight-api/
 ```
 
 ### Zmienne środowiskowe
@@ -82,12 +90,13 @@ Settings → Pages → Source: **GitHub Actions**. Settings → Secrets and vari
 - Klucz API istnieje tylko jako sekret workera; nie ma go w kodzie, w `.env` ani w historii Git (`.env*` w `.gitignore`).
 - CORS: w produkcji `ALLOWED_ORIGINS` zawiera tylko `https://arsenilamaka.github.io` (dokładny origin, bez ścieżki repozytorium i bez `localhost`); inne originy dostają 403. Lokalnie worker uruchamia się z `worker/.dev.vars` (w `.gitignore`), np. `ALLOWED_ORIGINS=http://localhost:5173`.
 - CORS **nie chroni** przed bezpośrednimi żądaniami HTTP: nagłówek `Origin` można podrobić np. w curl. Przed nadużyciem chronią limit żądań na IP, limity rozmiaru i dzienny limit API Gemini.
-- Limity: 10 MB pliku, 200 000 znaków tekstu, 1 MB żądania, 10 analiz na 10 minut z jednego IP.
+- Limity: 10 MB pliku, 200 000 znaków tekstu, 1 MB żądania, 10 analiz na 10 minut z jednego IP w obrębie instancji workera (bez bindingu `RATE_LIMITER` nie jest to limit globalny).
 - Brak `dangerouslySetInnerHTML`; wyniki AI są renderowane jako tekst.
 - Interfejs informuje, że tekst pliku trafia do zewnętrznego API AI.
 
 ## Znane ograniczenia
 
+- Dokumenty z mniej niż 200 znakami tekstu są odrzucane przed wysłaniem do AI, bo schemat (3–5 zdań, 3–7 punktów) wymusiłby zmyślanie treści.
 - **Skany bez warstwy tekstowej nie są analizowane** (OCR to punkt COULD). Strony-skany są wykrywane i zgłaszane. W dokumencie testowym dotyczy to strony 11 (Aneks nr 1), więc zmiany z aneksu nie trafiają do wyniku.
 - Limit żądań w workerze działa w obrębie jednej instancji (best effort). Dla twardego limitu można podpiąć binding `RATE_LIMITER` (Workers Rate Limiting), obsługiwany przez kod.
 - Darmowy limit Gemini jest ograniczony dziennie i może się zmienić; po jego wyczerpaniu aplikacja pokazuje komunikat o błędzie.

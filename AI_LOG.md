@@ -5,7 +5,7 @@ Dziennik faktycznego użycia narzędzi AI w tym projekcie.
 ## Narzędzia
 
 - **Claude Code** (Anthropic): analiza briefu i dokumentu testowego, plan architektury, generowanie kodu, testów i dokumentacji, uruchamianie lint/test/build i testu w przeglądarce (Playwright, Chromium).
-- **Google Gemini 2.5 Flash**: model używany przez aplikację w czasie działania (analiza dokumentów), nie do pisania kodu.
+- **Google Gemini Flash** (alias `gemini-flash-latest`, wcześniej `gemini-2.5-flash`): model używany przez aplikację w czasie działania (analiza dokumentów), nie do pisania kodu.
 
 ## Podział pracy
 
@@ -30,6 +30,8 @@ Dziennik faktycznego użycia narzędzi AI w tym projekcie.
 5. **Rozmiar paczki.** Pierwszy build miał 748 kB JS (pdf.js). Poprawka: dynamiczny import pdf.js przy pierwszym pliku, start strony ładuje ok. 320 kB.
 6. **Wycofany model.** Pierwsza konfiguracja używała `gemini-2.5-flash`. Na opublikowanym demo Gemini zwrócił 404, bo model nie był już dostępny. Poprawka: domyślny alias `gemini-flash-latest`, `thinkingLevel: low` dla nowszych modeli i czytelny błąd konfiguracji przy 404.
 7. **CORS.** AI zaproponowało dopisanie `localhost` do produkcyjnej listy originów. Poprawka po mojej uwadze: w produkcji tylko `https://arsenilamaka.github.io`, `localhost` tylko w lokalnym `.dev.vars`.
+
+8. **Audyt przed oddaniem** (zlecony przeze mnie, wykonany przez AI): PDF z jedną linijką tekstu trafiał do AI, choć schemat wymaga 3–7 punktów, co zmuszało model do zmyślania. Poprawka: próg 200 znaków przed wywołaniem AI. Odpowiedzi Gemini 400/401/403 (zły klucz) były pokazywane jako „usługa chwilowo niedostępna” z przyciskiem ponowienia. Poprawka: błąd konfiguracji bez ponowienia. README nie zgadzało się z kodem (model, lokalne uruchomienie po zawężeniu CORS); poprawione.
 
 ## Weryfikacja (ręczna, na opublikowanym demo)
 
